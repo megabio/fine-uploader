@@ -4,18 +4,40 @@
 {% markdown %}
 # Getting Started with Fine Uploader {: .page-header }
 
-This tutorial will serve as a step-by-step walkthrough for getting starting with
-Fine Uploader. It is geared towards those who have minimal experience with
-Javascript, server-side concepts, or the web.
+This tutorial will serve as a step-by-step guide that you can follow to get Fine Uploader up and running in your project.
 
 The tutorial is not comprehensive or meant to cover all aspects of Fine Uploader.
 For more information, make sure to read through the list of features as well
-as the API documentation.
+as the API documentation. Both of these items (and more) are available in the top nav menu anywhere on this site.
 
-### 1. Download
+### 1. Download (or build)
 
-You can get Fine Uploader in the [downloads](http://fineuploader.com/downloads.html)
-section. The download comes bundled with all required scripts and modules.
+First, you will need to download or build Fine Uploader's JS, CSS, image, and template files. You have exactly three different supported options to achieve this. Choose _one_ of the following options:
+
+#### Download [Fine Uploader from npm](https://www.npmjs.com/package/fine-uploader)
+
+The simplest option is to run `npm install fine-uploader` in your project directory. But this may not be appropriate for all situations.
+
+If your project has a package.json file, you should do this instead:
+
+1. Add a "fine-uploader" entry to the "dependencies" section of your project's package.json file. The safest option is to explicitly specify the version number you need. For example, as of 16 August 2016, your entry would be `"fine-uploader": "5.11.5"`. For more information about package.json files, read [the official npm documentation on the subject](https://docs.npmjs.com/files/package.json).
+2. Run `npm install` in the same directory as your project's package.json file.
+
+In either case, fine-uploader will be installed in a directory of the same name under the node_modules directory.
+
+#### Download Fine Uploader from FineUploader.com
+
+Navigate to http://fineuploader.com/customize and select the desired build type. See "step 2" below for a detailed explanation of the different Fine Uploader build types. For any version since (and including) 5.11.0, you can download the individual builds at https://github.com/FineUploader/fine-uploader/releases.
+
+
+#### Build Fine Uploader yourself from the GitHub repo
+
+1. `git clone https://github.com/FineUploader/fine-uploader.git`
+2. `cd fine-uploader`
+3. `npm install`
+4. `make build`
+
+This will result in a "_build" directory will CSS, JS, image, and template files for all possible builds of Fine Uploader. For information on how to further process these build files, if needed, read the ["Generating build artifacts" section the project's README.md file](https://github.com/FineUploader/fine-uploader#generating-build-artifacts).
 
 ### 2. Decide which Fine Uploader to use
 
