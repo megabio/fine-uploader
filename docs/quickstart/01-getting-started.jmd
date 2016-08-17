@@ -39,93 +39,44 @@ Navigate to [http://fineuploader.com/customize](http://fineuploader.com/customiz
 
 This will result in a "_build" directory with CSS, JS, image, and template files for all possible builds of Fine Uploader. For information on how to further process these build files, if needed, read the ["Generating build artifacts" section the project's README.md file](https://github.com/FineUploader/fine-uploader#generating-build-artifacts).
 
-### 2. Decide which Fine Uploader to use
+### 2. Decide which build of Fine Uploader to use
 
-#### Modes
-Fine Uploader comes with two different modes pertaining to the user interface.
+Fine Uploader builds are categorized by "endpoint type" _and_ by feature set. Each of the four endpoint type builds are available with each of the two supported feature sets.
 
-##### [Core Mode](../modes/core.html)
-The most basic Fine Uploader mode.  Core mode assumes that the developer will code their own UI
-but still make use of Fine Uploader's API. Core mode is suggested for advanced developers
-who wish to heavily customize the uploader's user interface. To use Core Mode:
+#### Endpoint types
 
-```javascript
-var uploader = new qq.FineUploaderBasic({/* options go here .... */});
-```
+A Fine Uploader build that is tied to a specific "endpoint type" is designed to send requests to match a specific type of server. There are three endpoint types supported:
 
-**Each endpoint handler has a "core" build artifact associated with it. For example, if
-you only need core functionality for Fine Uploader S3, you should import "s3.fine-uploader.core.js".**
+##### Traditional endpoints
 
-##### [UI Mode](../modes/ui.html)
-Inherits everything from Core mode. UI mode also comes with a fully functional
-user interface which includes, but is not limited to: a default upload button,
-progress bars, retry/cancel/delete buttons, proper display of error messages,
-and more. UI mode is recommended for beginning developers or for those who
-are pleased with the default Fine Uploader interface or can customize the default Fine Uploader
-UI via CSS. To use UI Mode:
+Traditional endpoints reside on a server or servers that you control. Fine Uploader "Traditional" will send all HTTP requests (such as "upload" and "delete file", to name a couple) to _your_ server. It is expected that you maintain and control the server that handles these requests. The [traditional server endpoints documentation page](../endpoint_handlers/traditional.html) describes how Fine Uploader "Traditional" will send requests to your server, and how your server must respond to these requests.
 
-```javascript
-var uploader = new qq.FineUploader({/* options go here ... */});
-```
-**Each endpoint handler has a "ui" build artifact associated with it. For example, if
-you need core _and_ UI functionality for Fine Uploader S3, you should import "s3.fine-uploader.js".**
+##### S3 endpoints
 
-{{ alert(
-"""If you are using Fine Uploader UI, you MUST include a template in your document/markup.  You can
-use the `default.html` file in the `templates` directory bundled with the library and customize it as desired.  See the
-[styling documentation page](../features/styling.html) for more details.""") }}
+Fine Uploader S3 sends all requests (with the exception of the delete file request) directly to one or more S3 buckets. You may [utilize a server you control to sign these requests](../endpoint_handlers/amazon-s3.html) (the safest option), or you may elect to [omit a server entirely and sign the requests client side](../features/no-server-uploads.html) using Amazon's Web Identity Federation.
+
+##### Microsoft Azure endpoints
+
+Fine Uploader Azure sends _all_ requests directly to one or more Azure Blob Storage containers. You must utilize [a server you control to sign each request](../endpoint_handlers/azure.html).
+
+{{ alert("Fine Uploader Azure does not support IE9 and older.  This is due to the fact that Azure's API does not allow files to be uploaded via multipart encoded POST requests, which is critical for IE9 and older support. If you need to support IE9 and older, you will need to load/use Fine Uploader with its traditional endpoint handler if the value of `qq.supportedFeatures.ajaxUploading` is `false`.") }}
+
+##### "All" endpoints
+
+If you would like to be able to send files to various endpoint types from a single running instance of Fine Uploader, a build of the library exists that includes support for traditional endpoint, S3 endpoints, _and_ Azure endpoints.
+
+#### Feature sets
+
+In addition to endpoint types Fine Uploader builds are classified according to what we call "feature sets". The two feature sets with associated builds are "UI" and "core".
+
+##### [Core feature set](../modes/core.html)
+
+The most basic Fine Uploader mode.  Core mode assumes that you will design and code your own UI but still make use of Fine Uploader's API. Core mode is suggested for advanced developers who wish to heavily customize the uploader's user interface.
 
 
-#### Endpoint Handlers
+##### [UI feature set](../modes/ui.html)
 
-##### [Traditional](../endpoint_handlers/traditional.html)
-To use the traditional endpoint handler, simply declare Fine Uploader as you
-normally would.
-
-##### [Amazon S3](../endpoint_handlers/amazon-s3.html)
-Amazon's S3 is currently the most popular cloud service.
-Fine Uploader comes with built in support that allows all files to be uploaded directly to S3 via the browser.
-To make use of Fine Uploader S3:
-
-```javascript
-var uploader = new qq.s3.FineUploader({/* options go here ... */});
-```
-
-##### [Azure Blob Storage](../endpoint_handlers/azure.html)
-Fine Uploader comes with built in support that allows all files to be uploaded directly to Azure via the browser.
-To make use of Fine Uploader Azure:
-
-```javascript
-var uploader = new qq.azure.FineUploader({/* options go here ... */});
-```
-{{ alert("Fine Uploader Azure does not support IE9 and older.  This is due to the fact that Azure's API does
-not allow files to be uploaded via multipart encoded POST requests, which is critical for IE9 and older support.
-If you need to support IE9 and older, you will need to load/use Fine Uploader with its traditional endpoint
-handler if the value of `qq.supportedFeatures.ajaxUploading` is `false`.") }}
-
-
-#### Callbacks
-Like many other JavaScript libraries, Fine Uploader implements a event system
-that uses callbacks to execute user-provided functions at runtime, based on
-specific events. These [events are listed here](../api/events.html).
-
-Callbacks are defined in the `callbacks` option
-property. The parameters for the callbacks are the same as listed in the
-[documentation](../api/events.html).
-
-**Example:**
-
-```javascript
-var uploader = new qq.FineUploader({
-    // options
-    callbacks: {
-        onUpload: function (id, name) {
-        },
-        onSubmitted: function (id, name) {
-        }
-    }
-});
-```
+Inherits everything from Core mode. UI mode also comes with a fully functional user interface which includes, but is not limited to: a default upload button, progress bars, retry/cancel/delete buttons, proper display of error messages, and more. UI mode is recommended for those who are pleased with the default Fine Uploader interface or can sufficiently customize the default Fine Uploader UI using CSS overrides. **In most cases, the UI feature set will be the most appropriate choice.**
 
 ### 3. Determine how you would like to import Fine Uploader
 
@@ -139,7 +90,7 @@ For more information on how you can load Fine Uploader into your project, please
 [modules feature page](../features/modules.html).
 
 
-Next, let's check out some of Fine Uploader's options.
+### 4. Next, let's check out some of Fine Uploader's options.
 
 Proceed by selecting either:
 
