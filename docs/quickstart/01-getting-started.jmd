@@ -12,7 +12,7 @@ as the API documentation. Both of these items (and more) are available in the to
 
 ### 1. Download (or build)
 
-First, you will need to download or build Fine Uploader's JS, CSS, image, and template files. You have exactly three different supported options to achieve this. Choose _one_ of the following options:
+First, you will need to download or build Fine Uploader's JS, CSS, image, and template files. You have exactly three different supported options to achieve this. **Choose _one_ of the following options:**
 
 #### Download [Fine Uploader from npm](https://www.npmjs.com/package/fine-uploader)
 
