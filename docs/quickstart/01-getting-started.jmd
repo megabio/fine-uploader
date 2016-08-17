@@ -71,7 +71,7 @@ In addition to endpoint types Fine Uploader builds are classified according to w
 
 ##### Core feature set
 
-The most basic Fine Uploader mode.  [The core feature set]((../modes/core.html) assumes that you will design and code your own UI but still make use of Fine Uploader's API. This feature set is suggested for advanced developers who wish to heavily customize the uploader's user interface.
+The most basic Fine Uploader mode.  [The core feature set](../modes/core.html) assumes that you will design and code your own UI but still make use of Fine Uploader's API. This feature set is suggested for advanced developers who wish to heavily customize the uploader's user interface.
 
 
 ##### UI feature set
