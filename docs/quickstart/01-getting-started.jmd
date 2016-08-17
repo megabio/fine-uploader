@@ -27,7 +27,7 @@ In either case, fine-uploader will be installed in a directory of the same name 
 
 #### Download Fine Uploader from FineUploader.com
 
-Navigate to http://fineuploader.com/customize and select the desired build type. See "step 2" below for a detailed explanation of the different Fine Uploader build types. For any version since (and including) 5.11.0, you can download the individual builds at https://github.com/FineUploader/fine-uploader/releases.
+Navigate to [http://fineuploader.com/customize] and select the desired build type. See "step 2" below for a detailed explanation of the different Fine Uploader build types. For any version since (and including) 5.11.0, you can download the individual builds at [https://github.com/FineUploader/fine-uploader/releases].
 
 
 #### Build Fine Uploader yourself from the GitHub repo
