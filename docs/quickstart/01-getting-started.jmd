@@ -37,7 +37,7 @@ Navigate to http://fineuploader.com/customize and select the desired build type.
 3. `npm install`
 4. `make build`
 
-This will result in a "_build" directory will CSS, JS, image, and template files for all possible builds of Fine Uploader. For information on how to further process these build files, if needed, read the ["Generating build artifacts" section the project's README.md file](https://github.com/FineUploader/fine-uploader#generating-build-artifacts).
+This will result in a "_build" directory with CSS, JS, image, and template files for all possible builds of Fine Uploader. For information on how to further process these build files, if needed, read the ["Generating build artifacts" section the project's README.md file](https://github.com/FineUploader/fine-uploader#generating-build-artifacts).
 
 ### 2. Decide which Fine Uploader to use
 
